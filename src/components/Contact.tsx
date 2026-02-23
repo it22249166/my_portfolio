@@ -2,12 +2,37 @@
 import { motion } from "framer-motion";
 
 export default function Contact() {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-    // TODO: replace this with a Server Action or API request.
-    alert("Thanks — message submitted (demo)");
-};
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const payload = {
+            email: String(formData.get("email") ?? ""),
+            message: String(formData.get("message") ?? ""),
+        };
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) {
+                const data = await res.json().catch(() => null);
+                throw new Error(data?.message ?? "Request failed");
+            }
+            form.reset();
+            alert("Thanks — message submitted");
+        } catch (error) {
+            const message =
+                error instanceof Error
+                    ? error.message
+                    : "Could not submit your message. Please try again.";
+            alert(message);
+        }
+    };
     return (
         <section id="contact" className="py-12">
             <div className="container mx-auto px-4">
@@ -33,6 +58,7 @@ export default function Contact() {
                         <span className="text-sm">Email</span>
                         <input
                             type="email"
+                            name="email"
                             className="mt-1 block w-full rounded border px-3 py-2"
                             placeholder="you@example.com"
                             required
@@ -42,6 +68,7 @@ export default function Contact() {
                     <label className="block mb-3">
                         <span className="text-sm">Message</span>
                         <textarea
+                            name="message"
                             className="mt-1 block w-full rounded border px-3 py-2"
                             rows={4}
                             placeholder="Hi — I'd like to work with you on..."
