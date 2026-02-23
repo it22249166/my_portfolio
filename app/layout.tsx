@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-     <body className="bg-black text-white scroll-smooth">
+   <body className="bg-white text-black dark:bg-black dark:text-white scroll-smooth">
         {children}
       </body>
     </html>

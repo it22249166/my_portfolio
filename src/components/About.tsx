@@ -12,9 +12,21 @@ export default function About() {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto"
       >
-        <h2 className="text-3xl font-bold mb-6 text-blue-500">
-          About Me
-        </h2>
+       <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="relative inline-block text-3xl font-bold text-blue-500 mb-12"
+            >
+            About Me
+            <motion.span
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="absolute left-0 -bottom-2 h-[2px] bg-blue-600"
+            />
+        </motion.h2>
 
         <p className="text-gray-400 leading-relaxed">
           I build scalable systems, modern dashboards, and structured
