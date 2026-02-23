@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion"; 
 
 export default function ContactClient() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -13,7 +14,21 @@ export default function ContactClient() {
     return (
         <section id="contact" className="py-12">
             <div className="container mx-auto px-4">
-                <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+                <motion.h2
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="relative inline-block text-3xl font-bold text-blue-500 mb-12"
+                    >
+                    Contact
+                    <motion.span
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="absolute left-0 -bottom-2 h-[2px] bg-blue-600"
+                    />
+                 </motion.h2>
                 <p className="mb-6">Interested in working together? Send me a message.</p>
 
                 <form className="max-w-md" onSubmit={handleSubmit}>
