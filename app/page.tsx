@@ -1,22 +1,20 @@
-import Image from "next/image";
+
+import Contact from "@/components/Contact";
+import Hero from "@/src/components/Hero";
+import Navbar from "@/src/components/Navbar";
+import Skills from "@/src/components/Skills";
+import About from "@/src/components/About"; 
+import Projects from "@/src/components/Projects";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col justify-center items-center">
-      <h1 className="text-5xl font-bold mb-4">
-        Malith Bandara
-      </h1>
-      <p className="text-xl text-gray-400 mb-6">
-        Software Engineering Undergraduate | MERN Stack Developer
-      </p>
-      <div className="flex gap-4">
-        <button className="px-6 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition">
-          View Projects
-        </button>
-        <button className="px-6 py-2 border border-white rounded-lg hover:bg-white hover:text-black transition">
-          Download CV
-        </button>
-      </div>
-    </main>
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
+    </>
   );
 }
