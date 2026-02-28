@@ -42,92 +42,110 @@ function Bullet({ className }: IconProps) {
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-white text-slate-900">
-      {/* GET IN TOUCH */}
-      <section id="contact" className="bg-[#f6f8ff] text-slate-900">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          {/* Title */}
-          <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-extrabold">Get In Touch</h2>
-            <p className="mt-2 text-slate-500">Let&apos;s discuss opportunities</p>
-            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-blue-600" />
-          </div>
+    <section id="contact" className="relative bg-gray-900">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gradient-to-tr from-purple-500/25 via-pink-500/20 to-blue-500/25 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-gradient-to-tr from-blue-500/25 via-cyan-500/20 to-emerald-500/25 blur-3xl" />
+      </div>
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-2 items-stretch">
-            {/* Left column */}
-            <div className="space-y-8">
-              {/* Contact information */}
-              <div>
-                <h3 className="text-xl font-semibold">Contact Information</h3>
+      <div className="relative mx-auto max-w-6xl px-6 py-20">
+        {/* Title */}
+        <div className="text-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white">Get In Touch</h2>
+          <p className="mt-2 text-white/70">Let&apos;s discuss opportunities</p>
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-blue-500" />
+        </div>
 
-                <ul className="mt-6 space-y-4 text-slate-600">
-                  <li className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white shadow-sm border border-slate-200">
-                      <PhoneIcon className="h-5 w-5 text-blue-600" />
-                    </span>
-                    <span>+94 102 1815</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white shadow-sm border border-slate-200">
-                      <MailIcon className="h-5 w-5 text-blue-600" />
-                    </span>
-                    <span>malithb072@gmail.com</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white shadow-sm border border-slate-200">
-                      <PinIcon className="h-5 w-5 text-blue-600" />
-                    </span>
-                    <span>Ratnapura, Sri Lanka</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white shadow-sm border border-slate-200">
-                      <LinkedInIcon className="h-5 w-5 text-blue-600" />
-                    </span>
-                    <a
-                      href="https://www.linkedin.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-blue-600 hover:underline"
-                    >
-                      LinkedIn Profile
-                    </a>
-                  </li>
-                </ul>
-              </div>
+        <div className="mt-14 grid gap-10 lg:grid-cols-2 items-stretch">
+          {/* Left card */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
+          >
+            <h3 className="text-xl font-semibold text-white">Contact Information</h3>
 
-              {/* Currently available for */}
-              <div>
-                <h3 className="text-xl font-semibold">Currently Available For</h3>
+            <ul className="mt-6 space-y-4 text-white/75">
+              <li className="flex items-center gap-4">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
+                  <PhoneIcon className="h-5 w-5 text-blue-400" />
+                </span>
+                <span className="font-medium">+94 102 1815</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
+                  <MailIcon className="h-5 w-5 text-blue-400" />
+                </span>
+                <a
+                  href="mailto:malithb072@gmail.com"
+                  className="font-medium hover:text-white"
+                >
+                  malithb072@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
+                  <PinIcon className="h-5 w-5 text-blue-400" />
+                </span>
+                <span className="font-medium">Ratnapura, Sri Lanka</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
+                  <LinkedInIcon className="h-5 w-5 text-blue-400" />
+                </span>
+                <a
+                  href="https://www.linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium hover:text-white"
+                >
+                  LinkedIn Profile
+                </a>
+              </li>
+            </ul>
 
-                <div className="mt-5 space-y-3">
-                  {[
-                    "Internship opportunities",
-                    "Full-stack development projects",
-                    "Freelance web development",
-                    "Open source contributions",
-                  ].map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 rounded-lg bg-white/70 px-4 py-3 border border-slate-200 shadow-[0_1px_0_rgba(0,0,0,0.03)]"
-                    >
-                      <Bullet className="bg-blue-600" />
-                      <span className="text-slate-700">{item}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="mt-10">
+              <h4 className="text-lg font-semibold text-white">Currently Available For</h4>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  "Internship opportunities",
+                  "Full-stack projects",
+                  "Freelance web development",
+                  "Open source contributions",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white/80"
+                  >
+                    <Bullet />
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
+          </motion.div>
 
-            {/* Right column card */}
-            <div className="rounded-2xl bg-gradient-to-b from-[#eef2ff] to-white p-10 shadow-md border border-slate-200">
-              <h3 className="text-2xl font-bold">Let&apos;s Connect</h3>
-              <p className="mt-3 text-slate-600 leading-relaxed">
-                I&apos;m always interested in hearing about new opportunities and
-                exciting projects. Whether you want to discuss a potential
-                collaboration or just say hello, feel free to reach out!
+          {/* Right card */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            whileHover={{ y: -4 }}
+            className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-10 shadow-2xl backdrop-blur"
+          >
+            <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+            <div className="relative">
+              <h3 className="text-2xl font-bold text-white">Let&apos;s Connect</h3>
+              <p className="mt-3 text-white/70 leading-relaxed">
+                I&apos;m always interested in new opportunities and exciting
+                projects. If you have something in mind—or just want to say hi—
+                feel free to reach out.
               </p>
 
-              <div className="mt-10 space-y-5">
+              <div className="mt-10 space-y-4">
                 <a
                   href="mailto:malithb072@gmail.com"
                   className="block w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3.5 text-center font-semibold text-white shadow-lg hover:brightness-110 active:brightness-95"
@@ -139,18 +157,23 @@ export default function Contact() {
                   href="https://www.linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="block w-full rounded-xl border-2 border-blue-600 px-6 py-3.5 text-center font-semibold text-blue-600 hover:bg-blue-50"
+                  className="block w-full rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-center font-semibold text-white/90 hover:bg-white/10"
                 >
                   Connect on LinkedIn
                 </a>
+
+                <div className="pt-3 text-center text-sm text-white/60">
+                  Typical reply time: within 24 hours
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
+      </div>
       </section>
 
       
     
-    </section>
+   
   );
 }
