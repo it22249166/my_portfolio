@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import PortfolioChat from "@/src/components/PortfolioChat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,15 +18,12 @@ export const metadata: Metadata = {
   description: "Welcome to the portfolio of Malith Bandara, a passionate software engineering undergraduate and MERN stack developer. Explore my projects, skills, and experience in web development, showcasing my expertise in MongoDB, Express.js, React, and Node.js. Discover how I combine creativity and technical proficiency to build innovative solutions. Let's connect and collaborate on exciting projects in the world of software development.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-   <body className="bg-white text-black dark:bg-black dark:text-white scroll-smooth">
+      <body>
         {children}
+        <PortfolioChat />
       </body>
     </html>
   );

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import Logo from "./Logo";
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,15 +33,16 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        
-        <h1 className="text-xl font-bold text-blue-500">
-          MB.
-        </h1>
+        <Logo size={44} withText />
+       
 
         <div className="flex items-center gap-6">
 
           {/* Navigation Links */}
           <div className="space-x-6 text-gray-300 hidden md:flex">
+            <a href="#" className="hover:text-blue-500 transition">
+              Home
+            </a>
             <a href="#about" className="hover:text-blue-500 transition">
               About
             </a>
@@ -54,13 +57,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={() => setDark(!dark)}
-            className="text-gray-400 hover:text-blue-500 transition text-lg"
-          >
-            {dark ? <FaSun /> : <FaMoon />}
-          </button>
+        
 
         </div>
       </div>

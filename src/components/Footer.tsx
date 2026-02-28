@@ -52,7 +52,7 @@ export default function Footer() {
                 <MailIcon className="h-6 w-6" />
               </a>
               <a
-                href="https://www.linkedin.com"
+                href="https:www.linkedin.com/in/malith-bandara-8681aa301"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/70 hover:text-white transition"
@@ -61,7 +61,7 @@ export default function Footer() {
                 <LinkedInIcon className="h-6 w-6" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/it22249166"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white/70 hover:text-white transition"
