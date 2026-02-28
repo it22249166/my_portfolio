@@ -72,7 +72,7 @@ export default function Contact() {
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
                   <PhoneIcon className="h-5 w-5 text-blue-400" />
                 </span>
-                <span className="font-medium">+94 102 1815</span>
+                <span className="font-medium">+94 74 102 1815</span>
               </li>
               <li className="flex items-center gap-4">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
@@ -154,7 +154,7 @@ export default function Contact() {
                 </a>
 
                 <a
-                  href="https://www.linkedin.com"
+                  href="https://www.linkedin.com/in/malith-bandara-8681aa301"
                   target="_blank"
                   rel="noreferrer"
                   className="block w-full rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-center font-semibold text-white/90 hover:bg-white/10"
