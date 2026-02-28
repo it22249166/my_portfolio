@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import twilio from "twilio";
 
 export async function POST(req: Request) {
   try {
@@ -14,11 +15,9 @@ export async function POST(req: Request) {
       );
     }
 
-    // Basic trimming and validation
     const trimmedEmail = String(email).trim();
     const trimmedMessage = String(message).trim();
 
-    // simple email regex for server-side validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmedEmail)) {
       return NextResponse.json(
@@ -41,7 +40,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Send to Resend API
+    // ---------- 1) Send Email (Resend) ----------
     const resendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -58,14 +57,11 @@ export async function POST(req: Request) {
     });
 
     if (!resendRes.ok) {
-      // Try to read JSON error body, fall back to text
       let details: unknown = null;
       try {
-        // try parsing JSON response
         details = await resendRes.json();
       } catch {
         try {
-          // fallback to text
           details = await resendRes.text();
         } catch {
           details = `Status ${resendRes.status}`;
@@ -76,6 +72,42 @@ export async function POST(req: Request) {
         { message: "Failed to send email.", details },
         { status: 502 }
       );
+    }
+
+    // ---------- 2) Save to Google Sheets (non-blocking best effort) ----------
+    const sheetUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+
+    // don’t fail the whole request if sheets fails
+    if (sheetUrl) {
+      fetch(sheetUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: trimmedEmail,
+          message: trimmedMessage,
+          source: "portfolio",
+          userAgent: req.headers.get("user-agent") || "",
+        }),
+      }).catch((e) => console.error("Sheets logging failed:", e));
+    }
+
+    // ---------- 3) SMS to you (optional) ----------
+    const sid = process.env.TWILIO_ACCOUNT_SID;
+    const token = process.env.TWILIO_AUTH_TOKEN;
+    const fromNum = process.env.TWILIO_FROM_NUMBER;
+    const toNum = process.env.SMS_TO_NUMBER;
+
+    if (sid && token && fromNum && toNum) {
+      const client = twilio(sid, token);
+      client.messages
+        .create({
+          from: fromNum,
+          to: toNum,
+          body: `New Portfolio Message 👋\nFrom: ${trimmedEmail}\nMsg: ${trimmedMessage.slice(0, 220)}${
+            trimmedMessage.length > 220 ? "..." : ""
+          }`,
+        })
+        .catch((e) => console.error("SMS send failed:", e));
     }
 
     return NextResponse.json({ message: "Success" }, { status: 200 });

@@ -67,7 +67,7 @@ export default function Contact() {
           >
             <h3 className="text-xl font-semibold text-white">Contact Information</h3>
 
-            <ul className="mt-6 space-y-4 text-white/75">
+            <li className="mt-6 space-y-4 text-white/75">
               <li className="flex items-center gap-4">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 border border-white/10">
                   <PhoneIcon className="h-5 w-5 text-blue-400" />
@@ -103,8 +103,14 @@ export default function Contact() {
                 >
                   LinkedIn Profile
                 </a>
+                
               </li>
-            </ul>
+                <img
+                    src={`/api/qr?text=${encodeURIComponent("https://your-portfolio-link.com")}`}
+                    alt="Portfolio QR"
+                    className="h-40 w-40 rounded-xl border border-white/10"
+                    />
+              </li>
 
             <div className="mt-10">
               <h4 className="text-lg font-semibold text-white">Currently Available For</h4>
@@ -146,12 +152,61 @@ export default function Contact() {
               </p>
 
               <div className="mt-10 space-y-4">
+                <form
+  action="https://docs.google.com/forms/d/e/1FAIpQLSfydFkJv8imGUYJBYfou3a8_Ksyv17ItIYqON4bmx1HaLcXIw/formResponse"
+  method="POST"
+  target="hidden_iframe"
+  className="space-y-6"
+>
+  <input
+    type="text"
+    name="entry.NAME_ID"
+    placeholder="Your Name"
+    required
+    className="w-full rounded-xl bg-black/40 border border-slate-800 px-4 py-3 text-white outline-none focus:border-blue-600"
+  />
+
+  <input
+    type="email"
+    name="entry.EMAIL_ID"
+    placeholder="Your Email"
+    required
+    className="w-full rounded-xl bg-black/40 border border-slate-800 px-4 py-3 text-white outline-none focus:border-blue-600"
+  />
+
+  <textarea
+    name="entry.MESSAGE_ID"
+    placeholder="Your Message"
+    required
+    rows={5}
+    className="w-full rounded-xl bg-black/40 border border-slate-800 px-4 py-3 text-white outline-none focus:border-blue-600"
+  />
+
+  <button
+    type="submit"
+    className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white hover:brightness-110 transition"
+  >
+    Send Message
+  </button>
+
+  <iframe name="hidden_iframe" style={{ display: "none" }} />
+</form>
+               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="mailto:malithb072@gmail.com"
-                  className="block w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3.5 text-center font-semibold text-white shadow-lg hover:brightness-110 active:brightness-95"
+                    href="https://wa.me/94770183365?text=Hi%20Malith%20I%20saw%20your%20portfolio"
+                    target="_blank"
+                    className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-white/90 hover:bg-white/10 transition"
                 >
-                  Send Email
+                    WhatsApp Chat
                 </a>
+
+                <a
+                    href="mailto:malithb072@gmail.com?subject=Portfolio%20Inquiry"
+                    className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-3 text-white font-semibold hover:brightness-110 transition"
+                >
+                    Send Email
+                </a>
+                </div>
 
                 <a
                   href="https://www.linkedin.com/in/malith-bandara-8681aa301"
