@@ -14,6 +14,14 @@ export async function POST(req: Request) {
       );
     }
 
+    const trimmedEmail = String(email).trim();
+    const trimmedMessage = String(message).trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      return NextResponse.json({ message: "Invalid email address." }, { status: 400 });
+    }
+
     const apiKey = process.env.RESEND_API_KEY;
     const to = process.env.CONTACT_TO_EMAIL;
     const from = process.env.CONTACT_FROM_EMAIL;
@@ -37,22 +45,75 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         from,
         to: [to],
-        reply_to: email,
-        subject: `Portfolio contact from ${email}`,
-        text: message,
+        reply_to: trimmedEmail,
+        subject: `Portfolio contact from ${trimmedEmail}`,
+        text: trimmedMessage,
       }),
     });
 
+    let emailSent = true;
+    let emailDetails: string | null = null;
+
     if (!resendRes.ok) {
-      const errorText = await resendRes.text();
-      console.error("Resend error:", errorText);
-      return NextResponse.json(
-        { message: "Failed to send email." },
-        { status: 502 }
-      );
+      emailSent = false;
+      try {
+        const json = await resendRes.json();
+        emailDetails = JSON.stringify(json);
+      } catch {
+        try {
+          emailDetails = await resendRes.text();
+        } catch {
+          emailDetails = `Status ${resendRes.status}`;
+        }
+      }
+      console.error("Resend error:", resendRes.status, emailDetails);
+      // continue — still attempt to save to Sheets
     }
 
-    return NextResponse.json({ message: "Success" }, { status: 200 });
+    // Save to Google Sheets (best-effort, but await so we can report details)
+    const sheetUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+    let sheetSaved = false;
+    let sheetDetails: string | null = null;
+
+    if (sheetUrl) {
+      try {
+        // Many Google Apps Script webhooks expect form-encoded data (x-www-form-urlencoded).
+        // Send as URLSearchParams so doPost(e).parameter will be populated.
+        const form = new URLSearchParams();
+        form.append("email", trimmedEmail);
+        form.append("message", trimmedMessage);
+        form.append("source", "portfolio");
+        form.append("userAgent", req.headers.get("user-agent") || "");
+
+        const sheetRes = await fetch(sheetUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: form.toString(),
+        });
+
+        if (sheetRes.ok) {
+          sheetSaved = true;
+        } else {
+          try {
+            sheetDetails = await sheetRes.text();
+          } catch {
+            sheetDetails = `Sheets webhook responded ${sheetRes.status}`;
+          }
+          console.error("Sheets logging failed (status):", sheetRes.status, sheetDetails);
+        }
+      } catch (e) {
+        sheetDetails = String(e ?? "unknown error");
+        console.error("Sheets logging failed:", e);
+      }
+    } else {
+      sheetDetails = "No GOOGLE_SHEETS_WEBHOOK_URL configured";
+      console.warn(sheetDetails);
+    }
+
+    return NextResponse.json(
+      { message: "Success", emailSent, emailDetails, sheetSaved, sheetDetails },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Contact API error:", error);
     return NextResponse.json({ message: "Invalid request." }, { status: 400 });

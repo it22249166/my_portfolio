@@ -13,6 +13,7 @@ type Project = {
   tech: string[];
   live?: string;
   github?: string;
+  image?: string;
   highlights?: string[];
 };
 
@@ -67,8 +68,8 @@ export default function Projects() {
       const matchesQuery = !q
         ? true
         : `${p.title} ${p.description} ${p.tech.join(" ")}`
-            .toLowerCase()
-            .includes(q);
+          .toLowerCase()
+          .includes(q);
 
       const matchesTech = activeTech === "All" ? true : p.tech.includes(activeTech);
 
@@ -83,59 +84,59 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         {/* Heading + Controls */}
         {/* Title (Get In Touch style) + Search */}
-<div className="mb-14">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true }}
-    className="text-center"
-  >
-    <h2 className="text-4xl md:text-5xl font-bold text-white">
-      Projects
-    </h2>
+        <div className="mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Projects
+            </h2>
 
-    <p className="mt-3 text-slate-400 text-lg">
-      Search projects, filter by tech, and explore highlights
-    </p>
+            <p className="mt-3 text-slate-400 text-lg">
+              Search projects, filter by tech, and explore highlights
+            </p>
 
-    <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: 80 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="h-[3px] bg-blue-600 mx-auto mt-5 rounded-full"
-    />
-  </motion.div>
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 80 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="h-[3px] bg-blue-600 mx-auto mt-5 rounded-full"
+            />
+          </motion.div>
 
-  {/* Search (same as before) */}
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: 0.1 }}
-    className="mt-10 w-full md:w-[420px] mx-auto"
-  >
-    <div className="relative">
-      <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
-      <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search projects (e.g., Docker, React)..."
-        className="w-full rounded-xl bg-slate-900/40 border border-slate-800 pl-11 pr-10 py-3 text-slate-200 placeholder:text-slate-500 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition"
-      />
-      {query ? (
-        <button
-          onClick={() => setQuery("")}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 transition"
-          aria-label="Clear search"
-        >
-          ✕
-        </button>
-      ) : null}
-    </div>
-  </motion.div>
-</div>
+          {/* Search (same as before) */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-10 w-full md:w-[420px] mx-auto"
+          >
+            <div className="relative">
+              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search projects (e.g., Docker, React)..."
+                className="w-full rounded-xl bg-slate-900/40 border border-slate-800 pl-11 pr-10 py-3 text-slate-200 placeholder:text-slate-500 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition"
+              />
+              {query ? (
+                <button
+                  onClick={() => setQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 transition"
+                  aria-label="Clear search"
+                >
+                  ✕
+                </button>
+              ) : null}
+            </div>
+          </motion.div>
+        </div>
 
         {/* Tech filter chips */}
         <motion.div
@@ -293,8 +294,8 @@ export default function Projects() {
                       {isExpanded
                         ? project.description
                         : project.description.length > 90
-                        ? project.description.slice(0, 90) + "..."
-                        : project.description}
+                          ? project.description.slice(0, 90) + "..."
+                          : project.description}
                     </p>
 
                     {/* Expand button */}
