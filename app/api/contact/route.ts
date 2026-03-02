@@ -56,39 +56,64 @@ export async function POST(req: Request) {
       }),
     });
 
+    let emailSent = true;
+    let emailDetails: string | null = null;
+
     if (!resendRes.ok) {
-      let details: unknown = null;
+      emailSent = false;
       try {
-        details = await resendRes.json();
+        const json = await resendRes.json();
+        emailDetails = JSON.stringify(json);
       } catch {
         try {
-          details = await resendRes.text();
+          emailDetails = await resendRes.text();
         } catch {
-          details = `Status ${resendRes.status}`;
+          emailDetails = `Status ${resendRes.status}`;
         }
       }
-      console.error("Resend error:", resendRes.status, details);
-      return NextResponse.json(
-        { message: "Failed to send email.", details },
-        { status: 502 }
-      );
+      console.error("Resend error:", resendRes.status, emailDetails);
+      // don't return here — continue so we can still save the message to Sheets
     }
 
-    // ---------- 2) Save to Google Sheets (non-blocking best effort) ----------
+    // ---------- 2) Save to Google Sheets (await so we can debug failures) ----------
     const sheetUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
-    // don’t fail the whole request if sheets fails
+    let sheetSaved = false;
+    let sheetDetails: string | null = null;
+
     if (sheetUrl) {
-      fetch(sheetUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: trimmedEmail,
-          message: trimmedMessage,
-          source: "portfolio",
-          userAgent: req.headers.get("user-agent") || "",
-        }),
-      }).catch((e) => console.error("Sheets logging failed:", e));
+      try {
+        // Many Google Apps Script webhooks expect form-encoded data (x-www-form-urlencoded).
+        // Send as URLSearchParams so doPost(e).parameter will be populated.
+        const form = new URLSearchParams();
+        form.append("email", trimmedEmail);
+        form.append("message", trimmedMessage);
+        form.append("source", "portfolio");
+        form.append("userAgent", req.headers.get("user-agent") || "");
+
+        const sheetRes = await fetch(sheetUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: form.toString(),
+        });
+
+        if (sheetRes.ok) {
+          sheetSaved = true;
+        } else {
+          try {
+            sheetDetails = await sheetRes.text();
+          } catch {
+            sheetDetails = `Sheets webhook responded ${sheetRes.status}`;
+          }
+          console.error("Sheets logging failed (status):", sheetRes.status, sheetDetails);
+        }
+      } catch (e) {
+        sheetDetails = String(e ?? "unknown error");
+        console.error("Sheets logging failed:", e);
+      }
+    } else {
+      sheetDetails = "No GOOGLE_SHEETS_WEBHOOK_URL configured";
+      console.warn(sheetDetails);
     }
 
     // ---------- 3) SMS to you (optional) ----------
@@ -103,14 +128,16 @@ export async function POST(req: Request) {
         .create({
           from: fromNum,
           to: toNum,
-          body: `New Portfolio Message 👋\nFrom: ${trimmedEmail}\nMsg: ${trimmedMessage.slice(0, 220)}${
-            trimmedMessage.length > 220 ? "..." : ""
-          }`,
+          body: `New Portfolio Message 👋\nFrom: ${trimmedEmail}\nMsg: ${trimmedMessage.slice(0, 220)}${trimmedMessage.length > 220 ? "..." : ""
+            }`,
         })
         .catch((e) => console.error("SMS send failed:", e));
     }
 
-    return NextResponse.json({ message: "Success" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Success", emailSent, emailDetails, sheetSaved, sheetDetails },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Contact API error:", error);
     return NextResponse.json({ message: "Invalid request." }, { status: 400 });
