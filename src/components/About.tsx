@@ -130,9 +130,9 @@ export default function About() {
 );
   const stats: Stat[] = useMemo(
     () => [
-      { value: 3, suffix: "+", label: "Years Learning" },
-      { value: 10, suffix: "+", label: "Projects Built" },
-      { value: 15, suffix: "+", label: "Technologies" },
+      { value: 4, suffix: "+", label: "Years Learning" },
+      { value: 15, suffix: "+", label: "Projects Built" },
+      { value: 25, suffix: "+", label: "Technologies" },
       { value: 100, suffix: "%", label: "Commitment" },
     ],
     []

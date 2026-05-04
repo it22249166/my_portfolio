@@ -7,12 +7,12 @@ const PortfolioModeContext = createContext<{
   mode: Mode;
   toggle: () => void;
 }>({
-  mode: "professional",
+  mode: "academic",
   toggle: () => {},
 });
 
 export function PortfolioModeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<Mode>("professional");
+  const [mode, setMode] = useState<Mode>("academic");
 
   const toggle = () => {
     setMode((prev) => (prev === "professional" ? "academic" : "professional"));

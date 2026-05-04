@@ -45,6 +45,70 @@ const projects: Project[] = [
     github: "https://github.com/it22249166/Image-Processing-Tool.git",
     highlights: ["Real-time filters", "Upload & preview", "OpenCV transforms"],
   },
+  {
+    title: "SME Business App",
+    description:
+      "A web application designed to help small and medium enterprises manage their operations, including inventory, sales, and customer relationships.",
+    tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/it22249166/SME-Business-App.git", 
+    highlights: ["Inventory management", "Sales tracking", "Customer relationship features"],
+  },
+   {
+    title: "AI-powered Productivity Browser",
+    description:
+      "A web application that leverages AI to enhance productivity by providing intelligent suggestions and automation features.",
+    tech: ["JavaScript", "React", "Node.js", "AI/ML"],
+    github: "https://github.com/it22249166/AI-powered-productivity-browser.git", 
+    highlights: ["AI suggestions", "Automation features", "Productivity tools"],
+  },
+   {
+    title: "POS System for SMEs",
+    description:
+      "A Point of Sale (POS) system tailored for small and medium enterprises, offering features like inventory management, sales tracking, and customer relationship management.",
+    tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/it22249166/POS1.git", 
+    highlights: ["Inventory management", "Sales tracking", "Customer relationship features"],
+  },
+    {
+    title: "Hostal Management System",
+    description:
+      "A comprehensive management system for hostels, providing features such as booking management, room allocation, and customer relationship management.",
+    tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/it22249166/HostalManagement.git", 
+    highlights: ["Booking management", "Room allocation", "Customer relationship features"],
+  },
+    {
+    title: "Waste Management System",
+    description:
+      "A web application for managing waste collection and disposal, with features for tracking, scheduling, and reporting.",
+    tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/Ravindu200232/wast_management.git", 
+    highlights: ["Waste tracking", "Scheduling", "Reporting features"],
+  },
+   {
+    title: "Driving License Test Preparation App",
+    description:
+      "A web application for preparing users for their driving license tests, with features for practice exams and study materials.",
+    tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/Ravindu200232/DrivingLC.git", 
+    highlights: ["Practice exams", "Study materials", "Test preparation features"],
+  },
+   {
+    title: "ArtisanConnect Mobile App",
+    description:
+      "A mobile application for connecting artisans with customers, featuring product listings, booking, and communication tools.",
+    tech: ["JavaScript", "React Native", "Node.js", "Express", "MongoDB"],
+    github: "https://github.com/Ravindu200232/ArtisanConnect_Mobile.git", 
+    highlights: ["Product listings", "Booking system", "Communication tools"],
+  },
+   {
+    title: "Fully automated deployment agent",
+    description:
+      "A deployment agent that automates the process of deploying applications to various environments, with features for configuration and monitoring.",
+    tech: ["Python", "Docker", "Kubernetes", "CI/CD"],
+    github: "https://github.com/Ravindu200232/RP-SE-009.git", 
+    highlights: ["Automated deployment", "Configuration management", "Monitoring features"],
+  },
 ];
 
 function uniq<T>(arr: T[]) {
