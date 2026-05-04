@@ -61,73 +61,73 @@ function TimelineDot() {
 
 export default function About() {
   const certifications: TimelineItem[] = useMemo(
-  () => [
-    {
-      title: "Full Stack React E-Commerce Project",
-      org: "GreatStack",
-      period: "2025",
-      points: [
-        "Built a complete e-commerce application using React.",
-        "Implemented product listing, cart logic, and UI structure.",
-      ],
-    },
-    {
-      title: "Python Programming",
-      org: "University of Moratuwa",
-      period: "2024",
-      points: [
-        "Covered Python fundamentals, OOP, and problem solving.",
-        "Hands-on exercises and real coding practice.",
-      ],
-    },
-    {
-      title: "Front-End Software Engineering Job Simulation",
-      org: "Skyscanner (Forage)",
-      period: "2024",
-      points: [
-        "Built UI components using modern frontend tools.",
-        "Worked with real-world front-end engineering tasks.",
-      ],
-    },
-    {
-      title: "Explore Digital Technology Job Simulation",
-      org: "GE Aerospace (Forage)",
-      period: "2024",
-      points: [
-        "Translated business requirements into technical specifications.",
-        "Worked on product-oriented digital solutions.",
-      ],
-    },
-    {
-      title: "Software Engineering Job Simulation",
-      org: "New York Jobs CEO Council (Forage)",
-      period: "2024",
-      points: [
-        "Solved software engineering tasks in a simulated environment.",
-        "Applied debugging and system design thinking.",
-      ],
-    },
-    {
-      title: "Cloud Platform Job Simulation",
-      org: "Verizon (Forage)",
-      period: "2024",
-      points: [
-        "Worked with cloud-native principles and resiliency concepts.",
-        "Tested redundancy and least-privilege access.",
-      ],
-    },
-    {
-      title: "Software Engineering Simulation",
-      org: "Goldman Sachs (Forage)",
-      period: "2024",
-      points: [
-        "Analyzed IT security practices and password hashing.",
-        "Proposed improvements for stronger authentication systems.",
-      ],
-    },
-  ],
-  []
-);
+    () => [
+      {
+        title: "Full Stack React E-Commerce Project",
+        org: "GreatStack",
+        period: "2025",
+        points: [
+          "Built a complete e-commerce application using React.",
+          "Implemented product listing, cart logic, and UI structure.",
+        ],
+      },
+      {
+        title: "Python Programming",
+        org: "University of Moratuwa",
+        period: "2024",
+        points: [
+          "Covered Python fundamentals, OOP, and problem solving.",
+          "Hands-on exercises and real coding practice.",
+        ],
+      },
+      {
+        title: "Front-End Software Engineering Job Simulation",
+        org: "Skyscanner (Forage)",
+        period: "2024",
+        points: [
+          "Built UI components using modern frontend tools.",
+          "Worked with real-world front-end engineering tasks.",
+        ],
+      },
+      {
+        title: "Explore Digital Technology Job Simulation",
+        org: "GE Aerospace (Forage)",
+        period: "2024",
+        points: [
+          "Translated business requirements into technical specifications.",
+          "Worked on product-oriented digital solutions.",
+        ],
+      },
+      {
+        title: "Software Engineering Job Simulation",
+        org: "New York Jobs CEO Council (Forage)",
+        period: "2024",
+        points: [
+          "Solved software engineering tasks in a simulated environment.",
+          "Applied debugging and system design thinking.",
+        ],
+      },
+      {
+        title: "Cloud Platform Job Simulation",
+        org: "Verizon (Forage)",
+        period: "2024",
+        points: [
+          "Worked with cloud-native principles and resiliency concepts.",
+          "Tested redundancy and least-privilege access.",
+        ],
+      },
+      {
+        title: "Software Engineering Simulation",
+        org: "Goldman Sachs (Forage)",
+        period: "2024",
+        points: [
+          "Analyzed IT security practices and password hashing.",
+          "Proposed improvements for stronger authentication systems.",
+        ],
+      },
+    ],
+    []
+  );
   const stats: Stat[] = useMemo(
     () => [
       { value: 4, suffix: "+", label: "Years Learning" },
@@ -141,6 +141,33 @@ export default function About() {
   const timeline: TimelineItem[] = useMemo(
     () => [
       {
+        title: "BSc (Hons) Software Engineering",
+        org: "SLIIT",
+        period: "2022 – 2026 (Expected)",
+        points: [
+          "Studying software engineering fundamentals, architecture, and testing.",
+          "Hands-on work with React, Node.js, Spring Boot, and databases.",
+        ],
+      },
+      {
+        title: "Software Engineering Intern",
+        org: "Defynbest (Pvt) Ltd",
+        period: "2025-2026",
+        points: [
+          "Building and maintaining web applications using React and Node.js.",
+          "Collaborating on feature development and code reviews.",
+        ],
+      },
+      {
+        title: "IT Support Engineer",
+        org: "Penguins Gen Service",
+        period: "2024",
+        points: [
+          "Provided technical support and troubleshooting for clients.",
+          "Managed IT infrastructure and resolved hardware/software issues.",
+        ],
+      },
+      {
         title: "Digital Technology Intern",
         org: "GE Aerospace",
         period: "2024 – Present",
@@ -150,15 +177,36 @@ export default function About() {
           "Worked with best practices: testing, performance, and integration checks.",
         ],
       },
+
       {
-        title: "BSc (Hons) Software Engineering",
-        org: "SLIIT",
-        period: "2022 – 2026 (Expected)",
+        title: "Front-End Software Engineering Intern",
+        org: "Skyscanner (Forage)",
+        period: "2024",
         points: [
-          "Studying software engineering fundamentals, architecture, and testing.",
-          "Hands-on work with React, Node.js, Spring Boot, and databases.",
+          "Built UI components using modern frontend tools.",
+          "Worked with real-world front-end engineering tasks.",
         ],
       },
+      {
+        title: "Software Engineering job simulation",
+        org: "Goldman Sachs",
+        period: "2024",
+        points: [
+          "Analyzed IT security practices and password hashing.",
+          "Proposed improvements for stronger authentication systems.",
+        ],
+      },
+      {
+        title: "Cloud Platform Job Simulation",
+        org: "Verizone",
+        period: "2024",
+        points: [
+          "Worked with cloud-native principles and resiliency concepts.",
+          "Tested redundancy and least-privilege access.",
+
+        ],
+      },
+
       {
         title: "Projects & Practice",
         org: "Personal / Academic",
@@ -170,7 +218,7 @@ export default function About() {
       },
     ],
     []
-    
+
   );
 
   return (
@@ -352,57 +400,57 @@ export default function About() {
           </div>
         </motion.div>
         {/* Certifications */}
-<motion.div
-  initial={{ opacity: 0, y: 26 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  className="mt-20"
->
-  <div className="text-center mb-10">
-    <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-      Licenses & Certifications
-    </h3>
-    <p className="mt-2 text-white/70">
-      Professional certifications and job simulations completed
-    </p>
-  </div>
-
-  <div className="relative rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur">
-    <div aria-hidden className="absolute left-6 top-10 bottom-10 w-px bg-white/10" />
-
-    <div className="space-y-10">
-      {certifications.map((item) => (
-        <div key={`${item.title}-${item.period}`} className="relative pl-12">
-          <div className="absolute left-5 top-1.5">
-            <TimelineDot />
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-20"
+        >
+          <div className="text-center mb-10">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-white">
+              Licenses & Certifications
+            </h3>
+            <p className="mt-2 text-white/70">
+              Professional certifications and job simulations completed
+            </p>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-            <div>
-              <div className="text-white font-semibold text-lg">
-                {item.title}
-              </div>
-              <div className="text-white/70">{item.org}</div>
-            </div>
-            <div className="text-white/60 text-sm md:text-base">
-              {item.period}
+          <div className="relative rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur">
+            <div aria-hidden className="absolute left-6 top-10 bottom-10 w-px bg-white/10" />
+
+            <div className="space-y-10">
+              {certifications.map((item) => (
+                <div key={`${item.title}-${item.period}`} className="relative pl-12">
+                  <div className="absolute left-5 top-1.5">
+                    <TimelineDot />
+                  </div>
+
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                    <div>
+                      <div className="text-white font-semibold text-lg">
+                        {item.title}
+                      </div>
+                      <div className="text-white/70">{item.org}</div>
+                    </div>
+                    <div className="text-white/60 text-sm md:text-base">
+                      {item.period}
+                    </div>
+                  </div>
+
+                  <ul className="mt-4 space-y-2 text-white/75">
+                    {item.points.map((p) => (
+                      <li key={p} className="flex gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-
-          <ul className="mt-4 space-y-2 text-white/75">
-            {item.points.map((p) => (
-              <li key={p} className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
-                <span>{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </div>
-</motion.div>
+        </motion.div>
       </div>
     </section>
   );
