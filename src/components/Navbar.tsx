@@ -36,7 +36,7 @@
 //     >
 //       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
 //         <Logo size={44} withText />
-       
+
 
 //         <div className="flex items-center gap-6">
 
@@ -59,7 +59,7 @@
 //             </a>
 //           </div>
 
-        
+
 
 //         </div>
 //       </div>
@@ -78,7 +78,7 @@ import { usePortfolioMode } from "@/context/PortfolioModeContext";
 export default function Navbar() {
   const { mode, toggle } = usePortfolioMode();
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   const isAcademic = mode === "academic";
 
@@ -114,20 +114,26 @@ export default function Navbar() {
   }, [isAcademic]);
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/70 dark:bg-black/60 backdrop-blur shadow-lg" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+      <div
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 ${scrolled
+          ? "border border-white/75 bg-white/82 shadow-[0_22px_60px_rgba(15,23,42,0.1)] backdrop-blur-2xl dark:border-white/10 dark:bg-dark-900/90"
+          : "border border-white/55 bg-white/66 shadow-[0_16px_40px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/10 dark:bg-dark-900/60"
+          }`}
+      >
         <Logo size={44} withText />
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {/* Navigation Links */}
-          <div className="space-x-6 text-gray-700 dark:text-gray-300 hidden md:flex">
+          <div className="hidden items-center gap-1 rounded-full bg-white/58 px-2 py-1 text-slate-700 shadow-inner shadow-white/70 md:flex dark:bg-white/5 dark:text-gray-300">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-blue-500 transition">
+              <a
+                key={l.href}
+                href={l.href}
+                className="group relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-white hover:text-accent-blue hover:shadow-[0_10px_24px_rgba(14,165,233,0.12)] dark:hover:bg-white/10 dark:hover:text-vibrant-300"
+              >
                 {l.label}
+                <span className="absolute inset-x-4 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-linear-to-r from-accent-cyan via-accent-teal to-accent-coral transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
           </div>
@@ -136,10 +142,10 @@ export default function Navbar() {
           <button
             onClick={toggle}
             className={[
-              "hidden sm:inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm transition",
+              "hidden sm:inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-sm",
               isAcademic
-                ? "border-blue-500/40 bg-blue-600/10 text-blue-600 dark:text-blue-300 hover:bg-blue-600/15"
-                : "border-slate-300/60 dark:border-slate-700 bg-white/60 dark:bg-black/30 text-slate-800 dark:text-slate-200 hover:border-blue-500/50",
+                ? "border-sky-200 bg-linear-to-r from-sky-50 via-white to-teal-50 text-sky-800 hover:border-sky-300 hover:from-sky-100 hover:to-teal-100 dark:border-vibrant-400/40 dark:from-dark-900/30 dark:to-dark-800/20 dark:text-vibrant-300"
+                : "border-white/80 bg-white/72 text-slate-800 shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:border-vibrant-300 hover:bg-white dark:border-dark-700 dark:bg-dark-800/40 dark:text-gray-200 dark:hover:bg-dark-900/20",
             ].join(" ")}
             title="Switch portfolio mode"
           >
@@ -153,21 +159,21 @@ export default function Navbar() {
           {/* Dark Mode Toggle */}
           <button
             onClick={() => setDark(!dark)}
-            className="text-xl text-gray-700 dark:text-gray-300 hover:text-blue-500 transition"
+            className="rounded-full border border-white/80 bg-white/72 p-2 text-lg text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:border-vibrant-300 hover:text-accent-blue hover:shadow-glow-sm dark:border-white/10 dark:bg-dark-800/50 dark:text-gray-300 dark:hover:text-vibrant-300"
             aria-label="Toggle dark mode"
             title="Toggle dark mode"
           >
-            {dark ? <FaSun /> : <FaMoon />}
+            {dark ? <FaSun className="text-amber-500" /> : <FaMoon className="text-slate-600" />}
           </button>
         </div>
       </div>
 
-      {/* Academic badge (optional but looks premium) */}
+      {/* Academic badge (premium style) */}
       {isAcademic ? (
-        <div className="w-full border-t border-blue-500/20 bg-blue-600/10 text-blue-700 dark:text-blue-200 text-xs">
+        <div className="w-full border-t border-sky-100/80 bg-linear-to-r from-sky-50/80 via-white to-teal-50/80 text-sky-800 text-xs font-medium dark:border-vibrant-500/20 dark:from-dark-900/20 dark:via-dark-900/10 dark:to-transparent dark:text-vibrant-300">
           <div className="max-w-6xl mx-auto px-6 py-2 flex items-center justify-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
-            Academic Portfolio Mode 
+            <span className="h-2 w-2 rounded-full bg-accent-coral animate-pulse" />
+            Academic Portfolio Mode
           </div>
         </div>
       ) : null}

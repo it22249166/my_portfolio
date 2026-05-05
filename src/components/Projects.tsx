@@ -50,63 +50,63 @@ const projects: Project[] = [
     description:
       "A web application designed to help small and medium enterprises manage their operations, including inventory, sales, and customer relationships.",
     tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/it22249166/SME-Business-App.git", 
+    github: "https://github.com/it22249166/SME-Business-App.git",
     highlights: ["Inventory management", "Sales tracking", "Customer relationship features"],
   },
-   {
+  {
     title: "AI-powered Productivity Browser",
     description:
       "A web application that leverages AI to enhance productivity by providing intelligent suggestions and automation features.",
     tech: ["JavaScript", "React", "Node.js", "AI/ML"],
-    github: "https://github.com/it22249166/AI-powered-productivity-browser.git", 
+    github: "https://github.com/it22249166/AI-powered-productivity-browser.git",
     highlights: ["AI suggestions", "Automation features", "Productivity tools"],
   },
-   {
+  {
     title: "POS System for SMEs",
     description:
       "A Point of Sale (POS) system tailored for small and medium enterprises, offering features like inventory management, sales tracking, and customer relationship management.",
     tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/it22249166/POS1.git", 
+    github: "https://github.com/it22249166/POS1.git",
     highlights: ["Inventory management", "Sales tracking", "Customer relationship features"],
   },
-    {
+  {
     title: "Hostal Management System",
     description:
       "A comprehensive management system for hostels, providing features such as booking management, room allocation, and customer relationship management.",
     tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/it22249166/HostalManagement.git", 
+    github: "https://github.com/it22249166/HostalManagement.git",
     highlights: ["Booking management", "Room allocation", "Customer relationship features"],
   },
-    {
+  {
     title: "Waste Management System",
     description:
       "A web application for managing waste collection and disposal, with features for tracking, scheduling, and reporting.",
     tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/Ravindu200232/wast_management.git", 
+    github: "https://github.com/Ravindu200232/wast_management.git",
     highlights: ["Waste tracking", "Scheduling", "Reporting features"],
   },
-   {
+  {
     title: "Driving License Test Preparation App",
     description:
       "A web application for preparing users for their driving license tests, with features for practice exams and study materials.",
     tech: ["JavaScript", "React", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/Ravindu200232/DrivingLC.git", 
+    github: "https://github.com/Ravindu200232/DrivingLC.git",
     highlights: ["Practice exams", "Study materials", "Test preparation features"],
   },
-   {
+  {
     title: "ArtisanConnect Mobile App",
     description:
       "A mobile application for connecting artisans with customers, featuring product listings, booking, and communication tools.",
     tech: ["JavaScript", "React Native", "Node.js", "Express", "MongoDB"],
-    github: "https://github.com/Ravindu200232/ArtisanConnect_Mobile.git", 
+    github: "https://github.com/Ravindu200232/ArtisanConnect_Mobile.git",
     highlights: ["Product listings", "Booking system", "Communication tools"],
   },
-   {
+  {
     title: "Fully automated deployment agent",
     description:
       "A deployment agent that automates the process of deploying applications to various environments, with features for configuration and monitoring.",
     tech: ["Python", "Docker", "Kubernetes", "CI/CD"],
-    github: "https://github.com/Ravindu200232/RP-SE-009.git", 
+    github: "https://github.com/Ravindu200232/RP-SE-009.git",
     highlights: ["Automated deployment", "Configuration management", "Monitoring features"],
   },
 ];
@@ -144,7 +144,7 @@ export default function Projects() {
   const featured = filtered[0];
 
   return (
-    <section id="projects" className="bg-black py-20 px-6">
+    <section id="projects" className="bg-linear-to-b from-[#fffdf8] via-white to-[#f3f8fd] px-6 py-20 dark:bg-dark-800">
       <div className="max-w-6xl mx-auto">
         {/* Heading + Controls */}
         {/* Title (Get In Touch style) + Search */}
@@ -156,11 +156,10 @@ export default function Projects() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              Projects
-            </h2>
+            <div className="section-label mx-auto mb-5">Selected work</div>
+            <h2 className="section-title text-4xl font-semibold md:text-5xl">Projects</h2>
 
-            <p className="mt-3 text-slate-400 text-lg">
+            <p className="mt-3 text-lg text-slate-600">
               Search projects, filter by tech, and explore highlights
             </p>
 
@@ -169,30 +168,30 @@ export default function Projects() {
               whileInView={{ width: 80 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="h-[3px] bg-blue-600 mx-auto mt-5 rounded-full"
+              className="mx-auto mt-5 h-[3px] rounded-full bg-linear-to-r from-accent-cyan via-accent-teal to-accent-coral"
             />
           </motion.div>
 
-          {/* Search (same as before) */}
+          {/* Search (updated for light theme) */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-10 w-full md:w-[420px] mx-auto"
+            className="mx-auto mt-10 w-full md:w-[420px]"
           >
             <div className="relative">
-              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search projects (e.g., Docker, React)..."
-                className="w-full rounded-xl bg-slate-900/40 border border-slate-800 pl-11 pr-10 py-3 text-slate-200 placeholder:text-slate-500 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition"
+                className="surface-panel w-full rounded-full py-3 pl-11 pr-10 text-slate-800 outline-none transition focus:border-accent-cyan/60 focus:ring-2 focus:ring-vibrant-400/20 dark:border-vibrant-700 dark:bg-dark-800/40 dark:text-gray-200 dark:placeholder:text-slate-500"
               />
               {query ? (
                 <button
                   onClick={() => setQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 transition"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700 dark:hover:text-slate-200"
                   aria-label="Clear search"
                 >
                   ✕
@@ -217,10 +216,10 @@ export default function Projects() {
                 key={t}
                 onClick={() => setActiveTech(t)}
                 className={[
-                  "rounded-full px-4 py-2 text-sm border transition",
+                  "rounded-full px-4 py-2 text-sm border font-medium transition-all duration-300",
                   active
-                    ? "bg-blue-600/15 border-blue-600 text-blue-300"
-                    : "bg-slate-900/40 border-slate-800 text-slate-300 hover:border-blue-600 hover:text-blue-200",
+                    ? "border-accent-cyan bg-sky-50 text-accent-blue shadow-glow-sm"
+                    : "border-sky-100 bg-white/80 text-slate-700 hover:border-accent-cyan/50 hover:bg-sky-50 hover:text-accent-blue dark:border-vibrant-700 dark:bg-dark-800/40 dark:text-gray-300 dark:hover:bg-dark-900/20",
                 ].join(" ")}
               >
                 {t}
@@ -236,21 +235,21 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.08 }}
-            className="mt-10 relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-black"
+            className="mt-10 relative overflow-hidden rounded-[2.4rem] border border-sky-100 bg-linear-to-br from-white via-[#f8fbff] to-[#fff4ea] shadow-[0_30px_70px_rgba(15,23,42,0.08)] dark:border-vibrant-700 dark:from-slate-800/60 dark:to-dark-900"
           >
-            <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full blur-3xl bg-blue-600/20" />
-            <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full blur-3xl bg-cyan-500/10" />
+            <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-sky-200/35 blur-3xl dark:bg-vibrant-600/20" />
+            <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-orange-200/35 blur-3xl dark:bg-vibrant-500/10" />
 
             <div className="relative p-7 md:p-10">
               <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <span className="inline-flex items-center rounded-full border border-blue-600/40 bg-blue-600/10 px-3 py-1 text-xs text-blue-200">
+                  <span className="section-label !px-3 !py-2 !text-[0.65rem] !tracking-[0.18em]">
                     Featured
                   </span>
-                  <h3 className="mt-3 text-2xl md:text-3xl font-bold text-slate-100">
+                  <h3 className="section-title mt-4 text-2xl font-semibold md:text-3xl dark:text-gray-100">
                     {featured.title}
                   </h3>
-                  <p className="mt-3 text-slate-300 max-w-2xl leading-relaxed">
+                  <p className="mt-3 max-w-2xl leading-relaxed text-slate-600 dark:text-gray-300">
                     {featured.description}
                   </p>
 
@@ -259,7 +258,7 @@ export default function Projects() {
                       {featured.highlights.map((h) => (
                         <span
                           key={h}
-                          className="text-xs px-3 py-1 rounded-full bg-slate-800/70 text-slate-200 border border-slate-700"
+                          className="rounded-full border border-sky-100 bg-white/80 px-3 py-1 text-xs font-medium text-accent-blue dark:border-vibrant-700 dark:bg-dark-800/70 dark:text-vibrant-300"
                         >
                           {h}
                         </span>
@@ -273,7 +272,8 @@ export default function Projects() {
                     <a
                       href={featured.github}
                       target="_blank"
-                      className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-black/30 px-4 py-2 text-slate-200 hover:border-blue-600 hover:text-blue-200 transition"
+                      rel="noreferrer"
+                      className="secondary-button !px-4 !py-2.5 !text-sm"
                     >
                       <FaGithub /> GitHub
                     </a>
@@ -282,7 +282,8 @@ export default function Projects() {
                     <a
                       href={featured.live}
                       target="_blank"
-                      className="inline-flex items-center gap-2 rounded-xl border border-blue-600/50 bg-blue-600/10 px-4 py-2 text-blue-200 hover:bg-blue-600/15 transition"
+                      rel="noreferrer"
+                      className="primary-button !px-4 !py-2.5 !text-sm"
                     >
                       <FiExternalLink /> Live
                     </a>
@@ -294,7 +295,7 @@ export default function Projects() {
                 {featured.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="text-sm px-3 py-1 bg-blue-600/15 text-blue-300 rounded-full border border-blue-600/30"
+                    className="rounded-full border border-sky-100 bg-white/82 px-3 py-1 text-sm font-medium text-accent-blue dark:border-vibrant-600/30 dark:bg-vibrant-600/15 dark:text-vibrant-300"
                   >
                     {tech}
                   </span>
@@ -319,14 +320,14 @@ export default function Projects() {
                   exit={{ opacity: 0, y: 18 }}
                   transition={{ duration: 0.45, delay: Math.min(index * 0.05, 0.2) }}
                   whileHover={{ y: -8 }}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition"
+                  className="group relative overflow-hidden rounded-[2rem] border border-sky-100 bg-white/84 p-6 shadow-[0_18px_38px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-glow-md dark:border-vibrant-700 dark:bg-dark-800/50"
                 >
                   {/* glow */}
-                  <div className="pointer-events-none absolute -inset-1 opacity-0 group-hover:opacity-100 transition duration-500 blur-2xl bg-gradient-to-r from-blue-600/20 via-cyan-500/10 to-indigo-500/20" />
+                  <div className="pointer-events-none absolute -inset-1 bg-linear-to-r from-sky-300/20 via-teal-200/15 to-orange-200/25 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100 dark:from-vibrant-600/20 dark:via-vibrant-500/10 dark:to-vibrant-500/20" />
 
                   <div className="relative">
                     <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-xl font-semibold text-slate-100">
+                      <h3 className="section-title text-xl font-semibold transition group-hover:text-accent-blue dark:text-gray-100">
                         {project.title}
                       </h3>
 
@@ -335,7 +336,8 @@ export default function Projects() {
                           <a
                             href={project.github}
                             target="_blank"
-                            className="text-slate-400 hover:text-blue-400 transition"
+                            rel="noreferrer"
+                            className="text-slate-400 transition hover:text-accent-blue dark:text-gray-400 dark:hover:text-vibrant-300"
                             aria-label="GitHub"
                           >
                             <FaGithub />
@@ -345,7 +347,8 @@ export default function Projects() {
                           <a
                             href={project.live}
                             target="_blank"
-                            className="text-slate-400 hover:text-blue-400 transition"
+                            rel="noreferrer"
+                            className="text-slate-400 transition hover:text-accent-blue dark:text-gray-400 dark:hover:text-blue-400"
                             aria-label="Live"
                           >
                             <FiExternalLink />
@@ -354,7 +357,7 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    <p className="mt-3 text-slate-300 leading-relaxed">
+                    <p className="mt-3 leading-relaxed text-slate-600 dark:text-gray-300">
                       {isExpanded
                         ? project.description
                         : project.description.length > 90
@@ -365,7 +368,7 @@ export default function Projects() {
                     {/* Expand button */}
                     <button
                       onClick={() => setExpanded(isExpanded ? null : project.title)}
-                      className="mt-4 text-sm text-blue-300 hover:text-blue-200 transition underline underline-offset-4"
+                      className="mt-4 text-sm font-semibold text-accent-blue underline underline-offset-4 transition hover:text-accent-teal"
                     >
                       {isExpanded ? "Show less" : "Read more"}
                     </button>
@@ -375,7 +378,7 @@ export default function Projects() {
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
-                          className="text-xs px-3 py-1 bg-blue-600/15 text-blue-300 rounded-full border border-blue-600/25"
+                          className="rounded-full border border-sky-100 bg-sky-50/70 px-3 py-1 text-xs font-medium text-accent-blue dark:border-blue-600/25 dark:bg-blue-600/15 dark:text-blue-300"
                         >
                           {tech}
                         </span>
@@ -392,12 +395,12 @@ export default function Projects() {
                           transition={{ duration: 0.35 }}
                           className="mt-4 overflow-hidden"
                         >
-                          <div className="rounded-xl border border-slate-800 bg-black/30 p-4">
-                            <p className="text-xs text-slate-400 mb-2">Highlights</p>
+                          <div className="rounded-xl border border-sky-100 bg-white/75 p-4 dark:border-vibrant-700 dark:bg-black/30">
+                            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-gray-400">Highlights</p>
                             <ul className="space-y-2">
                               {project.highlights.map((h) => (
-                                <li key={h} className="text-sm text-slate-200">
-                                  <span className="text-blue-400 mr-2">•</span>
+                                <li key={h} className="text-sm text-slate-700 dark:text-gray-200">
+                                  <span className="mr-2 font-bold text-accent-blue dark:text-blue-400">•</span>
                                   {h}
                                 </li>
                               ))}
@@ -415,7 +418,7 @@ export default function Projects() {
 
         {/* Empty state */}
         {filtered.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-slate-300">
+          <div className="mt-10 rounded-2xl border border-sky-100 bg-white/80 p-8 text-center font-medium text-slate-700 dark:border-vibrant-700 dark:bg-dark-800/40 dark:text-gray-300">
             No projects match your search/filter. Try another keyword or tech.
           </div>
         ) : null}

@@ -8,11 +8,11 @@ export default function CVSection() {
   const cvPdf = "/Malith_Bandara_CV.pdf";
 
   return (
-    <section id="cv" className="relative overflow-hidden bg-black py-24 px-6">
+    <section id="cv" className="relative overflow-hidden bg-linear-to-b from-[#f8fcff] via-white to-[#eef8ff] px-6 py-24">
       {/* glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-blue-600/15 blur-3xl" />
+        <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
+        <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-orange-200/25 blur-3xl" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
@@ -24,17 +24,17 @@ export default function CVSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 px-4 py-2 text-blue-200">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-accent-blue shadow-[0_12px_26px_rgba(14,165,233,0.08)]">
             <FiFileText />
             Academic Evidence
           </div>
 
-          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-white">
-            Curriculum <span className="text-blue-500">Vitae</span>
+          <h2 className="mt-5 text-4xl font-extrabold text-slate-900 md:text-5xl">
+            Curriculum <span className="text-accent-blue">Vitae</span>
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-blue-500" />
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-linear-to-r from-accent-cyan to-accent-teal" />
 
-          <p className="mt-6 text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-slate-600">
             My CV is included as part of the PPW portfolio requirements. You can download it or
             preview it below.
           </p>
@@ -51,7 +51,7 @@ export default function CVSection() {
           <a
             href={cvPdf}
             download
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white hover:brightness-110 active:brightness-95 transition"
+            className="inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-accent-cyan via-accent-teal to-accent-blue px-6 py-3 font-semibold text-white transition hover:brightness-110 active:brightness-95"
           >
             <FiDownload />
             Download CV
@@ -60,7 +60,8 @@ export default function CVSection() {
           <a
             href={cvPdf}
             target="_blank"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10 transition"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-2xl border border-sky-100 bg-white/82 px-6 py-3 font-semibold text-slate-700 transition hover:border-accent-cyan hover:bg-sky-50"
           >
             <FiExternalLink />
             Open in new tab
@@ -73,15 +74,15 @@ export default function CVSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="mt-10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur overflow-hidden"
+          className="mt-10 overflow-hidden rounded-[30px] border border-sky-100 bg-white/84 shadow-premium backdrop-blur"
         >
-          <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
-            <div className="text-white font-semibold">CV Preview</div>
-            <div className="text-white/60 text-sm">PDF embedded (academic evidence)</div>
+          <div className="flex items-center justify-between border-b border-sky-100 px-5 py-4">
+            <div className="font-semibold text-slate-900">CV Preview</div>
+            <div className="text-sm text-slate-500">PDF embedded (academic evidence)</div>
           </div>
 
           {/* PDF iframe */}
-          <div className="w-full h-[75vh] bg-black">
+          <div className="h-[75vh] w-full bg-white">
             <iframe
               src={cvPdf}
               className="w-full h-full"
@@ -91,7 +92,7 @@ export default function CVSection() {
         </motion.div>
 
         {/* Note for marking */}
-        <p className="mt-8 text-xs text-white/50 text-center">
+        <p className="mt-8 text-center text-xs text-slate-500">
           Note: This section is shown only in Academic Mode to satisfy PPW marking criteria.
         </p>
       </div>

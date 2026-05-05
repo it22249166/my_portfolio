@@ -33,9 +33,9 @@ export default function SignatureLogo({
         <defs>
           {/* Badge gradient */}
           <linearGradient id="sigBadge" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#2563EB" />
-            <stop offset="50%" stopColor="#06B6D4" />
-            <stop offset="100%" stopColor="#4F46E5" />
+            <stop offset="0%" stopColor="#0ea5e9" />
+            <stop offset="52%" stopColor="#14b8a6" />
+            <stop offset="100%" stopColor="#ff7a59" />
           </linearGradient>
 
           {/* Stroke gradient */}
@@ -145,10 +145,10 @@ export default function SignatureLogo({
 
       {withText && (
         <div className="leading-tight">
-          <div className="text-white font-semibold text-lg tracking-tight">
-            Malith<span className="text-blue-500">.</span>
+          <div className="section-title bg-linear-to-r from-slate-900 via-sky-700 to-teal-600 bg-clip-text text-lg font-semibold tracking-tight text-transparent dark:from-white dark:via-sky-200 dark:to-teal-200">
+            Malith<span className="text-accent-coral">.</span>
           </div>
-          <div className="text-slate-400 text-xs">Software Engineer</div>
+          <div className="text-xs text-slate-500 dark:text-slate-300">Software Engineer</div>
         </div>
       )}
     </div>

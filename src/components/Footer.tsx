@@ -1,26 +1,30 @@
 type IconProps = { className?: string };
 
-function PhoneIcon({ className }: IconProps) {
-  return (
-    <span className={className}>📞</span>
-  );
-}
-
 function MailIcon({ className }: IconProps) {
   return (
-    <span className={className}>✉️</span>
-  );
-}
-
-function PinIcon({ className }: IconProps) {
-  return (
-    <span className={className}>📍</span>
+    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden="true">
+      <path
+        d="M4.5 7.5A2.5 2.5 0 0 1 7 5h10a2.5 2.5 0 0 1 2.5 2.5v9A2.5 2.5 0 0 1 17 19H7a2.5 2.5 0 0 1-2.5-2.5v-9Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.5 8l5.1 4.1c.8.6 1.9.6 2.6 0L19.5 8"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
 function LinkedInIcon({ className }: IconProps) {
   return (
-    <span className={className}>🔗</span>
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.67H9.32V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm-1.78 13.02h3.56V9H3.56v11.45Z" />
+    </svg>
   );
 }
 
@@ -35,49 +39,49 @@ export default function Footer() {
 
   return (
 
-      <footer className="bg-gradient-to-b from-[#0b1b3a] to-[#07142d] text-white">
-        <div className="mx-auto max-w-6xl px-6 py-14">
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-3xl font-extrabold text-purple-300">Malith Bandara</h3>
-            <p className="mt-2 text-white/70">
-              Software Engineering Student | Full-Stack Developer
-            </p>
+    <footer className="border-t border-sky-100 bg-linear-to-b from-[#fffdf8] via-white to-[#eef8ff] text-slate-900 dark:border-vibrant-800 dark:from-dark-900 dark:to-dark-900 dark:text-white">
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <div className="flex flex-col items-center text-center">
+          <h3 className="section-title text-3xl font-semibold">Malith Bandara</h3>
+          <p className="mt-2 text-slate-600 dark:text-gray-300">
+            Software Engineering Student | Full-Stack Developer
+          </p>
 
-            <div className="mt-6 flex items-center gap-6">
-              <a
-                href="mailto:malithb072@gmail.com"
-                className="text-white/70 hover:text-white transition"
-                aria-label="Email"
-              >
-                <MailIcon className="h-6 w-6" />
-              </a>
-              <a
-                href="https:www.linkedin.com/in/malith-bandara-8681aa301"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/70 hover:text-white transition"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon className="h-6 w-6" />
-              </a>
-              <a
-                href="https://github.com/it22249166"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/70 hover:text-white transition"
-                aria-label="GitHub"
-              >
-                <GitHubIcon className="h-6 w-6" />
-              </a>
-            </div>
-
-            <div className="mt-10 h-px w-full bg-white/10" />
-
-            <p className="mt-6 text-sm text-white/55">
-              © {new Date().getFullYear()} Malith Bandara. All rights reserved.
-            </p>
+          <div className="mt-6 flex items-center gap-6">
+            <a
+              href="mailto:malithb072@gmail.com"
+              className="rounded-full border border-sky-100 bg-white/80 p-3 text-slate-500 transition hover:border-accent-cyan hover:text-accent-blue dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:text-vibrant-300"
+              aria-label="Email"
+            >
+              <MailIcon className="h-6 w-6" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/malith-bandara-8681aa301"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-sky-100 bg-white/80 p-3 text-slate-500 transition hover:border-accent-cyan hover:text-accent-blue dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:text-blue-400"
+              aria-label="LinkedIn"
+            >
+              <LinkedInIcon className="h-6 w-6" />
+            </a>
+            <a
+              href="https://github.com/it22249166"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-sky-100 bg-white/80 p-3 text-slate-500 transition hover:border-accent-cyan hover:text-accent-blue dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:text-blue-400"
+              aria-label="GitHub"
+            >
+              <GitHubIcon className="h-6 w-6" />
+            </a>
           </div>
+
+          <div className="mt-10 h-px w-full bg-sky-100 dark:bg-slate-700" />
+
+          <p className="mt-6 text-sm font-light text-slate-500 dark:text-gray-400">
+            © {new Date().getFullYear()} Malith Bandara. All rights reserved.
+          </p>
         </div>
-      </footer>
+      </div>
+    </footer>
   );
 }

@@ -110,11 +110,11 @@ export default function ReflectiveJournal() {
   const current = entries[active];
 
   return (
-    <section id="reflective" className="relative overflow-hidden bg-black py-24 px-6">
+    <section id="reflective" className="relative overflow-hidden bg-linear-to-b from-[#f5fbff] via-white to-[#eef8ff] px-6 py-24">
       {/* background glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-600/15 blur-3xl" />
-        <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-purple-600/10 blur-3xl" />
+        <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-sky-200/35 blur-3xl" />
+        <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-orange-200/30 blur-3xl" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
@@ -126,16 +126,16 @@ export default function ReflectiveJournal() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 px-4 py-2 text-blue-200">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-accent-blue shadow-[0_12px_26px_rgba(14,165,233,0.08)]">
             <FiBookOpen />
             Academic Portfolio
           </div>
 
-          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-white">
-            Reflective <span className="text-blue-500">Journal</span>
+          <h2 className="mt-5 text-4xl font-extrabold text-slate-900 md:text-5xl">
+            Reflective <span className="text-accent-blue">Journal</span>
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-blue-500" />
-          <p className="mt-6 text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-linear-to-r from-accent-cyan to-accent-teal" />
+          <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-slate-600">
             This journal summarizes what I learned during PPW, how I applied it to my portfolio and
             career thinking, and how I plan to continue improving as a software engineering undergraduate.
           </p>
@@ -151,8 +151,8 @@ export default function ReflectiveJournal() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-4"
           >
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-4">
-              <p className="text-white/70 text-sm mb-3">Select week</p>
+            <div className="rounded-[28px] border border-sky-100 bg-white/82 p-4 shadow-[0_20px_40px_rgba(15,23,42,0.06)] backdrop-blur">
+              <p className="mb-3 text-sm text-slate-500">Select week</p>
 
               <div className="space-y-2">
                 {entries.map((e, i) => {
@@ -164,17 +164,17 @@ export default function ReflectiveJournal() {
                       className={[
                         "w-full text-left rounded-xl px-4 py-3 border transition",
                         selected
-                          ? "border-blue-500/50 bg-blue-600/10 text-white"
-                          : "border-white/10 bg-black/20 text-white/80 hover:border-blue-500/30",
+                          ? "border-sky-200 bg-sky-50 text-slate-900 shadow-[0_12px_24px_rgba(14,165,233,0.08)]"
+                          : "border-sky-100 bg-white/72 text-slate-700 hover:border-sky-200 hover:bg-sky-50/70",
                       ].join(" ")}
                       type="button"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div>
                           <div className="text-sm font-semibold">{e.week}</div>
-                          <div className="text-xs text-white/60 mt-0.5">{e.title}</div>
+                          <div className="mt-0.5 text-xs text-slate-500">{e.title}</div>
                         </div>
-                        {selected ? <FiCheckCircle className="text-blue-400" /> : null}
+                        {selected ? <FiCheckCircle className="text-accent-blue" /> : null}
                       </div>
                     </button>
                   );
@@ -191,39 +191,39 @@ export default function ReflectiveJournal() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-8"
           >
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur p-7 md:p-10">
+            <div className="rounded-[30px] border border-sky-100 bg-linear-to-b from-white via-sky-50/45 to-orange-50/30 p-7 shadow-premium backdrop-blur md:p-10">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                 <div>
-                  <p className="text-blue-300 text-sm font-semibold">{current.week}</p>
-                  <h3 className="mt-1 text-2xl font-bold text-white">{current.title}</h3>
-                  <p className="mt-3 text-white/70 leading-relaxed">{current.focus}</p>
+                  <p className="text-sm font-semibold text-accent-blue">{current.week}</p>
+                  <h3 className="mt-1 text-2xl font-bold text-slate-900">{current.title}</h3>
+                  <p className="mt-3 leading-relaxed text-slate-600">{current.focus}</p>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white/80 text-sm">
-                  Mode: <span className="text-blue-300 font-semibold">Academic</span>
+                <div className="rounded-xl border border-sky-100 bg-white/82 px-4 py-3 text-sm text-slate-600">
+                  Mode: <span className="font-semibold text-accent-blue">Academic</span>
                 </div>
               </div>
 
               {/* learned */}
               <div className="mt-8 grid md:grid-cols-2 gap-6">
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                  <h4 className="text-white font-semibold mb-3">What I learned</h4>
-                  <ul className="space-y-2 text-white/75">
+                <div className="rounded-2xl border border-sky-100 bg-white/78 p-5">
+                  <h4 className="mb-3 font-semibold text-slate-900">What I learned</h4>
+                  <ul className="space-y-2 text-slate-600">
                     {current.learned.map((x) => (
                       <li key={x} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-blue" />
                         <span>{x}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                  <h4 className="text-white font-semibold mb-3">Evidence / Application</h4>
-                  <ul className="space-y-2 text-white/75">
+                <div className="rounded-2xl border border-sky-100 bg-white/78 p-5">
+                  <h4 className="mb-3 font-semibold text-slate-900">Evidence / Application</h4>
+                  <ul className="space-y-2 text-slate-600">
                     {current.evidence.map((x) => (
                       <li key={x} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-teal" />
                         <span>{x}</span>
                       </li>
                     ))}
@@ -232,15 +232,15 @@ export default function ReflectiveJournal() {
               </div>
 
               {/* reflection */}
-              <div className="mt-6 rounded-2xl border border-blue-500/20 bg-blue-600/10 p-5">
-                <h4 className="text-white font-semibold mb-2">Reflection</h4>
-                <p className="text-white/80 leading-relaxed">{current.reflection}</p>
+              <div className="mt-6 rounded-2xl border border-sky-200 bg-sky-50/75 p-5">
+                <h4 className="mb-2 font-semibold text-slate-900">Reflection</h4>
+                <p className="leading-relaxed text-slate-700">{current.reflection}</p>
               </div>
 
               {/* next steps */}
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
-                <h4 className="text-white font-semibold mb-3">Next steps</h4>
-                <ul className="space-y-2 text-white/75">
+              <div className="mt-6 rounded-2xl border border-sky-100 bg-white/78 p-5">
+                <h4 className="mb-3 font-semibold text-slate-900">Next steps</h4>
+                <ul className="space-y-2 text-slate-600">
                   {current.nextSteps.map((x) => (
                     <li key={x} className="flex gap-3">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -250,7 +250,7 @@ export default function ReflectiveJournal() {
                 </ul>
               </div>
 
-              <p className="mt-8 text-xs text-white/50">
+              <p className="mt-8 text-xs text-slate-500">
                 Note: Content is presented in Academic Mode for PPW assessment requirements. Professional Mode
                 keeps recruiter-focused sections only.
               </p>

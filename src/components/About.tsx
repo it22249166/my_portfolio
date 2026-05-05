@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { usePortfolioMode } from "@/context/PortfolioModeContext";
 
 type Stat = {
   label: string;
@@ -41,11 +42,11 @@ function StatCounter({ value, suffix, label }: Stat) {
 
   return (
     <div ref={ref} className="text-center">
-      <div className="text-3xl font-bold text-white">
+      <div className="text-3xl font-bold text-accent-cyan">
         {display}
         {suffix ?? ""}
       </div>
-      <div className="mt-2 text-white/70">{label}</div>
+      <div className="mt-2 text-slate-600 font-medium">{label}</div>
     </div>
   );
 }
@@ -53,13 +54,16 @@ function StatCounter({ value, suffix, label }: Stat) {
 function TimelineDot() {
   return (
     <span className="relative flex h-3 w-3">
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500/40" />
-      <span className="relative inline-flex h-3 w-3 rounded-full bg-blue-500" />
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-vibrant-400/40" />
+      <span className="relative inline-flex h-3 w-3 rounded-full bg-vibrant-500" />
     </span>
   );
 }
 
 export default function About() {
+  const { mode } = usePortfolioMode();
+  const isAcademic = mode === "academic";
+
   const certifications: TimelineItem[] = useMemo(
     () => [
       {
@@ -222,11 +226,11 @@ export default function About() {
   );
 
   return (
-    <section id="about" className="relative overflow-hidden bg-black py-24 px-6">
+    <section id="about" className="relative overflow-hidden bg-linear-to-b from-[#f8fbff] via-[#fbfaf5] to-[#f1f7fd] py-24 px-6">
       {/* Background Gradients */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gradient-to-tr from-purple-500/25 via-pink-500/20 to-blue-500/25 blur-3xl" />
-        <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-gradient-to-tr from-blue-500/25 via-cyan-500/20 to-emerald-500/25 blur-3xl" />
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-linear-to-tr from-sky-200/30 via-white/20 to-amber-200/20 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-linear-to-tr from-teal-100/20 via-orange-100/15 to-sky-200/20 blur-3xl" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
@@ -238,13 +242,16 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-            About <span className="text-blue-500">Me</span>
+          <div className="section-label mx-auto mb-5">
+            {isAcademic ? "Academic portfolio" : "Profile overview"}
+          </div>
+          <h2 className="section-title text-4xl font-semibold md:text-5xl">
+            {isAcademic ? "Academic Profile" : "Experience & Background"}
           </h2>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-blue-500" />
-          <p className="mt-6 text-white/70 max-w-2xl mx-auto">
-            Passionate Software Engineering undergraduate focused on building scalable systems,
-            clean architectures, and impactful digital experiences.
+          <p className="mt-6 max-w-2xl mx-auto leading-relaxed text-slate-600 md:text-lg">
+            {isAcademic
+              ? "A concise overview of my degree path, current learning priorities, academic evidence, and the software engineering strengths I am building."
+              : "A quick look at how I work, what I build best, and the experience shaping my path as a full-stack engineer."}
           </p>
         </motion.div>
 
@@ -256,20 +263,20 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur"
+            className="surface-panel rounded-[2rem] p-8"
           >
             <div className="flex items-center gap-4">
-              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-white/10">
+              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
                 {/* Put your image in /public/profile.jpg */}
                 <Image src="/malith.jpeg" alt="Malith Bandara" fill className="object-cover" />
               </div>
               <div>
-                <div className="text-white font-semibold text-xl">Malith Bandara</div>
-                <div className="text-white/70">Software Engineering Student</div>
+                <div className="section-title text-xl font-semibold">Malith Bandara</div>
+                <div className="text-slate-600 font-medium">Software Engineering Undergraduate</div>
               </div>
             </div>
 
-            <p className="mt-6 text-white/75 leading-relaxed">
+            <p className="mt-6 text-slate-600 leading-relaxed">
               I build clean, maintainable full-stack applications with modern technologies.
               I enjoy turning ideas into reliable products with great UI/UX and strong backend logic.
             </p>
@@ -280,13 +287,13 @@ export default function About() {
               <a
                 href="/Malith_Bandara_CV.pdf"
                 download
-                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 font-semibold text-white shadow-lg hover:brightness-110 active:brightness-95"
+                className="primary-button"
               >
                 Download CV
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10"
+                className="secondary-button"
               >
                 Let&apos;s Talk
               </a>
@@ -302,7 +309,7 @@ export default function About() {
               ].map((tag) => (
                 <div
                   key={tag}
-                  className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white/85"
+                  className="soft-panel rounded-[1.25rem] px-4 py-3 text-sm font-semibold text-slate-700"
                 >
                   {tag}
                 </div>
@@ -318,11 +325,13 @@ export default function About() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-10 shadow-2xl backdrop-blur relative">
-              <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+            <div className="soft-panel relative rounded-[2rem] p-10">
+              <div aria-hidden className="absolute inset-0 rounded-[2rem] bg-linear-to-tr from-white/30 via-transparent to-white/10" />
               <div className="relative">
-                <h3 className="text-2xl font-bold text-white">What I do</h3>
-                <p className="mt-4 text-white/75 leading-relaxed">
+                <h3 className="section-title text-2xl font-semibold">
+                  {isAcademic ? "Current Academic Focus" : "What I build best"}
+                </h3>
+                <p className="mt-4 text-slate-600 leading-relaxed">
                   I specialize in full-stack development using React/Next.js, Node.js, and databases.
                   I focus on clean architecture, performance, and building features that match real business needs.
                 </p>
@@ -336,7 +345,7 @@ export default function About() {
                   ].map((skill) => (
                     <div
                       key={skill}
-                      className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white/90"
+                      className="rounded-[1.25rem] border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-slate-700"
                     >
                       {skill}
                     </div>
@@ -363,13 +372,13 @@ export default function About() {
           className="mt-16"
         >
           <div className="text-center mb-10">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white">Experience Timeline</h3>
-            <p className="mt-2 text-white/70">A quick overview of what I’ve been doing</p>
+            <h3 className="section-title text-3xl font-semibold md:text-4xl">Experience Timeline</h3>
+            <p className="mt-2 text-slate-600">A quick overview of what I have been doing</p>
           </div>
 
-          <div className="relative rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur">
+          <div className="surface-panel relative rounded-[2rem] p-8 md:p-10">
             {/* vertical line */}
-            <div aria-hidden className="absolute left-6 top-10 bottom-10 w-px bg-white/10" />
+            <div aria-hidden className="absolute left-6 top-10 bottom-10 w-px bg-vibrant-200" />
 
             <div className="space-y-10">
               {timeline.map((item) => (
@@ -380,17 +389,17 @@ export default function About() {
 
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
-                      <div className="text-white font-semibold text-lg">{item.title}</div>
-                      <div className="text-white/70">{item.org}</div>
+                      <div className="text-slate-900 font-bold text-lg">{item.title}</div>
+                      <div className="text-slate-600 font-medium">{item.org}</div>
                     </div>
-                    <div className="text-white/60 text-sm md:text-base">{item.period}</div>
+                    <div className="text-slate-500 text-sm md:text-base font-semibold">{item.period}</div>
                   </div>
 
-                  <ul className="mt-4 space-y-2 text-white/75">
+                  <ul className="mt-4 space-y-2 text-slate-600">
                     {item.points.map((p) => (
                       <li key={p} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" aria-hidden />
-                        <span>{p}</span>
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-vibrant-500 dark:bg-vibrant-500" aria-hidden />
+                        <span className="font-light">{p}</span>
                       </li>
                     ))}
                   </ul>
@@ -408,16 +417,16 @@ export default function About() {
           className="mt-20"
         >
           <div className="text-center mb-10">
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white">
+            <h3 className="section-title text-3xl font-semibold md:text-4xl">
               Licenses & Certifications
             </h3>
-            <p className="mt-2 text-white/70">
+            <p className="mt-2 text-slate-600">
               Professional certifications and job simulations completed
             </p>
           </div>
 
-          <div className="relative rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur">
-            <div aria-hidden className="absolute left-6 top-10 bottom-10 w-px bg-white/10" />
+          <div className="surface-panel relative rounded-[2rem] p-8 md:p-10">
+            <div aria-hidden className="absolute left-6 top-10 bottom-10 w-px bg-vibrant-200" />
 
             <div className="space-y-10">
               {certifications.map((item) => (
@@ -428,20 +437,20 @@ export default function About() {
 
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
-                      <div className="text-white font-semibold text-lg">
+                      <div className="text-slate-900 font-semibold text-lg">
                         {item.title}
                       </div>
-                      <div className="text-white/70">{item.org}</div>
+                      <div className="text-slate-600">{item.org}</div>
                     </div>
-                    <div className="text-white/60 text-sm md:text-base">
+                    <div className="text-slate-500 text-sm md:text-base">
                       {item.period}
                     </div>
                   </div>
 
-                  <ul className="mt-4 space-y-2 text-white/75">
+                  <ul className="mt-4 space-y-2 text-slate-600">
                     {item.points.map((p) => (
                       <li key={p} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-vibrant-500" />
                         <span>{p}</span>
                       </li>
                     ))}
