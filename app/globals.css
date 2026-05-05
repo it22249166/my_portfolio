@@ -254,3 +254,44 @@ html.dark ::-webkit-scrollbar-thumb {
 .dark .secondary-button:hover {
   background: rgba(13, 28, 48, 0.96);
 }
+
+@media print {
+  html,
+  body {
+    background: white !important;
+    color: #111 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+
+  header,
+  nav {
+    position: static !important;
+  }
+
+  section {
+    min-height: auto !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
