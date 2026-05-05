@@ -74,7 +74,7 @@ export default function Contact() {
   const qrLink = "https://www.linkedin.com/in/malith-bandara-8681aa301";
 
   return (
-    <section id="contact" className="relative bg-linear-to-b from-[#fffdf8] via-white to-[#f1f7fd] dark:bg-dark-800">
+    <section id="contact" className="relative bg-linear-to-b from-[#fffdf8] via-white to-[#f1f7fd] dark:bg-linear-to-b dark:from-[#08131f] dark:via-[#0b192a] dark:to-[#10233a]">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-sky-200/35 blur-3xl dark:bg-vibrant-500/15" />
         <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-orange-200/35 blur-3xl dark:bg-vibrant-500/15" />

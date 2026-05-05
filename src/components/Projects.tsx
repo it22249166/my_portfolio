@@ -144,7 +144,7 @@ export default function Projects() {
   const featured = filtered[0];
 
   return (
-    <section id="projects" className="bg-linear-to-b from-[#fffdf8] via-white to-[#f3f8fd] px-6 py-20 dark:bg-dark-800">
+    <section id="projects" className="bg-linear-to-b from-[#fffdf8] via-white to-[#f3f8fd] px-6 py-20 dark:bg-linear-to-b dark:from-[#08131f] dark:via-[#0b192a] dark:to-[#10233a]">
       <div className="max-w-6xl mx-auto">
         {/* Heading + Controls */}
         {/* Title (Get In Touch style) + Search */}

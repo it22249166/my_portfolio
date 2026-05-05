@@ -39,7 +39,7 @@ export default function Footer() {
 
   return (
 
-    <footer className="border-t border-sky-100 bg-linear-to-b from-[#fffdf8] via-white to-[#eef8ff] text-slate-900 dark:border-vibrant-800 dark:from-dark-900 dark:to-dark-900 dark:text-white">
+    <footer className="border-t border-sky-100 bg-linear-to-b from-[#fffdf8] via-white to-[#eef8ff] text-slate-900 dark:border-vibrant-800 dark:bg-linear-to-b dark:from-[#08131f] dark:via-[#0a1728] dark:to-[#07111f] dark:text-white">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="flex flex-col items-center text-center">
           <h3 className="section-title text-3xl font-semibold">Malith Bandara</h3>

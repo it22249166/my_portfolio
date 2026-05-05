@@ -156,7 +156,7 @@ export default function Skills() {
   }, [activeCategory, query, pinned]);
 
   return (
-    <section id="skills" className="relative overflow-hidden bg-linear-to-b from-[#f8fcff] via-[#fffdf8] to-[#eef7fd] px-6 py-20 dark:bg-dark-800">
+    <section id="skills" className="relative overflow-hidden bg-linear-to-b from-[#f8fcff] via-[#fffdf8] to-[#eef7fd] px-6 py-20 dark:bg-linear-to-b dark:from-[#08131f] dark:via-[#0b192a] dark:to-[#10233a]">
       {/* background blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-sky-200/35 blur-3xl dark:bg-vibrant-600/10" />

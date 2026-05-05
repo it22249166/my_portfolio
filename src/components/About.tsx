@@ -226,7 +226,7 @@ export default function About() {
   );
 
   return (
-    <section id="about" className="relative overflow-hidden bg-linear-to-b from-[#f8fbff] via-[#fbfaf5] to-[#f1f7fd] py-24 px-6">
+    <section id="about" className="relative overflow-hidden bg-linear-to-b from-[#f8fbff] via-[#fbfaf5] to-[#f1f7fd] px-6 py-24 dark:bg-linear-to-b dark:from-[#08131f] dark:via-[#0c1a2c] dark:to-[#10233a]">
       {/* Background Gradients */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-linear-to-tr from-sky-200/30 via-white/20 to-amber-200/20 blur-3xl" />
@@ -389,13 +389,13 @@ export default function About() {
 
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
-                      <div className="text-slate-900 font-bold text-lg">{item.title}</div>
-                      <div className="text-slate-600 font-medium">{item.org}</div>
+                      <div className="text-lg font-bold text-slate-900 dark:text-white">{item.title}</div>
+                      <div className="font-medium text-slate-600 dark:text-slate-300">{item.org}</div>
                     </div>
-                    <div className="text-slate-500 text-sm md:text-base font-semibold">{item.period}</div>
+                    <div className="text-sm font-semibold text-slate-500 dark:text-slate-400 md:text-base">{item.period}</div>
                   </div>
 
-                  <ul className="mt-4 space-y-2 text-slate-600">
+                  <ul className="mt-4 space-y-2 text-slate-600 dark:text-slate-300">
                     {item.points.map((p) => (
                       <li key={p} className="flex gap-3">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-vibrant-500 dark:bg-vibrant-500" aria-hidden />
@@ -437,17 +437,17 @@ export default function About() {
 
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                     <div>
-                      <div className="text-slate-900 font-semibold text-lg">
+                      <div className="text-lg font-semibold text-slate-900 dark:text-white">
                         {item.title}
                       </div>
-                      <div className="text-slate-600">{item.org}</div>
+                      <div className="text-slate-600 dark:text-slate-300">{item.org}</div>
                     </div>
-                    <div className="text-slate-500 text-sm md:text-base">
+                    <div className="text-sm text-slate-500 dark:text-slate-400 md:text-base">
                       {item.period}
                     </div>
                   </div>
 
-                  <ul className="mt-4 space-y-2 text-slate-600">
+                  <ul className="mt-4 space-y-2 text-slate-600 dark:text-slate-300">
                     {item.points.map((p) => (
                       <li key={p} className="flex gap-3">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-vibrant-500" />
